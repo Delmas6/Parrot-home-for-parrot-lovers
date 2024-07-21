@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parrot Home 🦜 for Parrot Lovers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        form label {
+            margin: 5px 0;
+        }
+
+        form input, form textarea {
+            margin-bottom: 10px;
+            padding: 8px;
+            width: 100%;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Carousel styles */
+        .carousel {
+            position: relative;
+            max-width: 600px;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .carousel-image {
+            width: 100%;
+            display: none;
+        }
+
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        .carousel-button.prev {
+            left: 0;
+        }
+
+        .carousel-button.next {
+            right: 0;
+        }
+
+        /* Parrot listing styles */
+        .parrot-item {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+
+        .parrot-item img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Parrot Home 🦜 for Parrot Lovers</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#parrots">Our Parrots</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="home">
+        <h2>Featured Parrots</h2>
+        <div class="carousel">
+            <img class="carousel-image" src="path-to-macaw.jpg" alt="Macaw">
+            <img class="carousel-image" src="path-to-african-grey.jpg" alt="African Grey">
+            <img class="carousel-image" src="path-to-amazon-parrot.jpg" alt="Amazon Parrot">
+            <img class="carousel-image" src="path-to-cockatoo.jpg" alt="Cockatoo">
+            <img class="carousel-image" src="path-to-ringneck.jpg" alt="Ringneck">
+            <img class="carousel-image" src="path-to-conure.jpg" alt="Conure">
+            <img class="carousel-image" src="path-to-hybrid.jpg" alt="Hybrid">
+            <button class="carousel-button prev">❮</button>
+            <button class="carousel-button next">❯</button>
+        </div>
+    </section>
+    
+    <section id="about">
+        <h2>About Us</h2>
+        <p>At Parrot Home 🦜 for Parrot Lovers, we are dedicated to providing a diverse selection of healthy and well-cared-for parrots. Our collection includes vibrant Macaws, intelligent African Greys, lively Amazon Parrots, affectionate Cockatoos, playful Ringnecks, energetic Conures, and unique hybrids. Each parrot is carefully nurtured to ensure they make loving and delightful companions. We are passionate about parrots and committed to connecting you with your perfect feathered friend.</p>
+    </section>
+    
+    <section id="parrots">
+        <h2>Our Parrots</h2>
+        <!-- Parrot listings will be dynamically loaded here -->
+    </section>
+    
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form action="submit_form.php" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+            
+            <button type="submit">Send Message</button>
+        </form>
+        <p>You can also reach us on WhatsApp at <a href="tel:+16464811503">+1 (646) 481-1503</a> or via email at <a href="mailto:talkingparrotsindustry@com">talkingparrotsindustry@com</a>.</p>
+    </section>
+    
+    <footer>
+        <p>&copy; 2024 Parrot Home 🦜 for Parrot Lovers</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Form Validation
+            document.querySelector('form').addEventListener('submit', function(e) {
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const message = document.getElementById('message').value;
+
+                if (!name || !email || !message) {
+                    alert('Please fill in all fields.');
+                    e.preventDefault();
+                    return;
+                }
+
+                alert('Thank you for your message!');
+            });
+
+            // Image Carousel
+            let carouselIndex = 0;
+            const carouselImages = document.querySelectorAll('.carousel-image');
+            const totalImages = carouselImages.length;
+
+            function showCarouselImage(i) {
+                carouselImages.forEach((img, idx) => {
+                    img.style.display = idx === i ? 'block' : 'none';
+                });
+            }
+
+            document.querySelector('.carousel-button.next').addEventListener('click', function() {
+                carouselIndex = (carouselIndex + 1) % totalImages;
+                showCarouselImage(carouselIndex);
+            });
+
+            document.querySelector('.carousel-button.prev').addEventListener('click', function() {
+                carouselIndex = (carouselIndex - 1 + totalImages) % totalImages;
+                showCarouselImage(carouselIndex);
+            });
+
+            // Show the first image initially
+            showCarouselImage(carouselIndex);
+
+            // Dynamic Content Loading for Parrot Listings
+            const parrots = [
+                { name: 'Macaw', description: 'Discover our beautiful macaw parrots, known for their vibrant colors and friendly nature.', image: 'path-to-macaw.jpg' },
+                { name: 'African Grey', description: 'Meet our African Grey parrots, famous for their exceptional intelligence and talking ability.', image: 'path-to-african-grey.jpg' },
+                { name: 'Amazon Parrot', description: 'Check out our Amazon Parrots, which are lively and enjoy interacting with their owners.', image: 'path-to-amazon-parrot.jpg' },
+                { name: 'Cockatoo', description: 'Our Cockatoos are affectionate and come in a variety of beautiful colors.', image: 'path-to-cockatoo.jpg' },
+                { name: 'Ringneck', description: 'Find our charming Ringneck parrots, known for their playful behavior and striking looks.', image: 'path-to-ringneck.jpg' },
+                { name: 'Conure', description: 'Explore our energetic Conures, which make fantastic companions with their lively personalities.', image: 'path-to-conure.jpg' },
+                { name: 'Hybrid', description: 'We also offer unique hybrid parrots, blending traits from various species for a one-of-a-kind pet.', image: 'path-to-hybrid.jpg' }
+            ];
+
+            const parrotList = document.getElementById('parrots');
+            
+            parrots.forEach(parrot => {
+                const div = document.createElement('div');
+                div.className = 'parrot-item';
+                div.innerHTML = `
+                    <h3>${parrot.name}</h3>
+                    <img src="${parrot.image}" alt="${parrot.name}" />
+                    <p>${parrot.description}</p>
+                `;
+                parrotList.appendChild(div);
+            });
+        });
+    </script>
