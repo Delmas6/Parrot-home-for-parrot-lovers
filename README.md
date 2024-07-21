@@ -1,1 +1,0 @@
-# Parrot-home-for-parrot-lovers
